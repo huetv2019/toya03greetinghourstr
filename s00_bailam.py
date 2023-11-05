@@ -50,9 +50,36 @@ greeting('2100')             | Good evening!          | 14
 
 #region bailam
 def greeting(hour_str):
-  return 'todo'
+
+    hour_str = hour_str.replace(" ", "").replace(":", "").replace("pm","PM")
+
+    hour = 0
+
+    if len(hour_str) > 3:
+
+        hour = int(hour_str[:2]) + 12 if hour_str[-2:] == "PM" else int(hour_str[:2])
+
+    elif len(hour_str) == 3:
+        hour = int(hour_str[:1]) + 12 if hour_str[-2:] == "PM" else int(hour_str[:1])
+
+    if hour >= 0 and hour < 12:
+
+        return "Good morning!"
+
+    elif hour >= 12 and hour < 18:
+
+        return "Good afternoon!"
+
+    elif hour >= 18 and hour < 24:
+
+        return "Good evening!"
+
+    else:
+
+        return "Invalid time input"
   
 
 if __name__=='__main__':
   pass
+  
 #endregion bailam
